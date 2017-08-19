@@ -8,9 +8,15 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import br.com.teste.rest.models.Cordenadas;
+import br.com.teste.rest.constantes.Constantes;
+import br.com.teste.rest.models.Coordenadas;
 import br.com.teste.rest.repository.CordenadasRepository;
 
+/**
+ * 
+ * @author Rodolfo Goncalves
+ *
+ */
 @RequestScoped
 public class CordenadasBizz {
 
@@ -18,22 +24,33 @@ public class CordenadasBizz {
 	private CordenadasRepository repository;
 
 	/**
+	 * Metodo responsavel por retornar todas as cordenadas cadastradas na base
+	 * de dados
 	 * 
 	 * @return
 	 */
 	@Transactional(Transactional.TxType.NOT_SUPPORTED)
-	public List<Cordenadas> getAll() {
-		return repository.findAll(Cordenadas.class, null, null);
+	public List<Coordenadas> getAll() {
+		return repository.findAll(Coordenadas.class, null, null);
 	}
 
+	/**
+	 * Metodo responsavel por retornar todas as cordenadas cadastradas de acordo
+	 * com os filtros passados
+	 * 
+	 * @param coordenadaX
+	 * @param coordenadaY
+	 * @param raio
+	 * @return
+	 */
 	@Transactional(Transactional.TxType.NOT_SUPPORTED)
-	public List<Cordenadas> getPoisProximidade(Integer cordenadaX, Integer cordenadaY, Integer raio) {
-		validaCordenadas(cordenadaX, cordenadaY);
-		List<Cordenadas> cordendasList = this.getAll();
+	public List<Coordenadas> getPoisProximidade(Integer coordenadaX, Integer coordenadaY, Integer raio) {
+		validaCordenadas(coordenadaX, coordenadaY);
+		List<Coordenadas> cordendasList = this.getAll();
 
 		if (!cordendasList.isEmpty()) {
 			return cordendasList.stream()
-					.filter(cordenadas -> pertenceReferencia(cordenadaX, cordenadaY, raio, cordenadas))
+					.filter(cordenadas -> pertenceReferencia(coordenadaX, coordenadaY, raio, cordenadas))
 					.collect(Collectors.toList());
 		}
 
@@ -41,15 +58,16 @@ public class CordenadasBizz {
 	}
 
 	/**
+	 * Metodo responsavel por validar se as coordenadas informadas sao validas
 	 * 
-	 * @param cordenadaX
-	 * @param cordenadaY
+	 * @param coordenadaX
+	 * @param coordenadaY
 	 */
-	private void validaCordenadas(Integer cordenadaX, Integer cordenadaY) {
-		if (cordenadaX == null && cordenadaY == null) {
-			throw new IllegalArgumentException("Valores de cordendas devem ser informados.");
-		} else if (cordenadaX < 0 || cordenadaY < 0) {
-			throw new IllegalArgumentException("Valores de cordendas n�o podem ser menores que 0.");
+	private void validaCordenadas(Integer coordenadaX, Integer coordenadaY) {
+		if (coordenadaX == null && coordenadaY == null) {
+			throw new IllegalArgumentException(Constantes.VALORES_CORDENADAS_NULOS);
+		} else if (coordenadaX < 0 || coordenadaY < 0) {
+			throw new IllegalArgumentException(Constantes.VALORES_CORDENADAS_MENORES_QUE_ZERO);
 		}
 	}
 
@@ -57,46 +75,48 @@ public class CordenadasBizz {
 	 * Calcula a distancia entre os pontos verificando se está no raio de
 	 * distancia informado
 	 * 
-	 * @param cordenadaX
-	 * @param cordenadaY
+	 * @param coordenadaX
+	 * @param coordenadaY
 	 * @param raio
-	 * @param cordenadas
+	 * @param coordenadas
 	 * @return
 	 */
-	public boolean pertenceReferencia(Integer cordenadaX, Integer cordenadaY, Integer raio, Cordenadas cordenadas) {
-		return Math.sqrt(Math.pow((cordenadaX - cordenadas.getCordenadaX()), 2)
-				+ Math.pow((cordenadaY - cordenadas.getCordenadaY()), 2)) <= raio;
+	public boolean pertenceReferencia(Integer coordenadaX, Integer coordenadaY, Integer raio, Coordenadas coordenadas) {
+		return Math.sqrt(Math.pow((coordenadaX - coordenadas.getCordenadaX()), 2)
+				+ Math.pow((coordenadaY - coordenadas.getCordenadaY()), 2)) <= raio;
 	}
 
 	/**
+	 * Metodo responsavel por persistir a entidade cordenadas
 	 * 
-	 * @param cordenadas
+	 * @param coordenadas
 	 * @return
 	 */
 	@Transactional
-	public Cordenadas save(Cordenadas cordenadas) {
-		if (cordenadas == null) {
-			throw new IllegalArgumentException("Nenhum parâmetro foi informado");
+	public Coordenadas save(Coordenadas coordenadas) {
+		if (coordenadas == null) {
+			throw new IllegalArgumentException(Constantes.NENHUM_PARAMETRO_FOI_INFORMADO);
 		}
 
-		return repository.save(cordenadas);
+		return repository.save(coordenadas);
 	}
 
 	/**
-	 * Carga inicial
+	 * Metodo responsavel por realizar a carga inicial de todas as cordenadas
+	 * mencionadas no desafio
 	 * 
 	 * @return
 	 */
 	@Transactional
-	public List<Cordenadas> cargaDadosIniciais() {
-		repository.save(new Cordenadas(1, "Lanchonete", 27, 12));
-		repository.save(new Cordenadas(null, "Posto", 31, 18));
-		repository.save(new Cordenadas(null, "Joalheria", 15, 12));
-		repository.save(new Cordenadas(null, "Floricultura", 19, 21));
-		repository.save(new Cordenadas(null, "Pub", 12, 8));
-		repository.save(new Cordenadas(null, "Supermercado", 23, 6));
-		repository.save(new Cordenadas(null, "Churrascaria", 28, 2));
+	public List<Coordenadas> cargaDadosIniciais() {
+		repository.save(new Coordenadas(null, "Lanchonete", 27, 12));
+		repository.save(new Coordenadas(null, "Posto", 31, 18));
+		repository.save(new Coordenadas(null, "Joalheria", 15, 12));
+		repository.save(new Coordenadas(null, "Floricultura", 19, 21));
+		repository.save(new Coordenadas(null, "Pub", 12, 8));
+		repository.save(new Coordenadas(null, "Supermercado", 23, 6));
+		repository.save(new Coordenadas(null, "Churrascaria", 28, 2));
 
-		return repository.findAll(Cordenadas.class, null, null);
+		return repository.findAll(Coordenadas.class, null, null);
 	}
 }

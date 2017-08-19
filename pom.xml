@@ -66,7 +66,6 @@
 			<groupId>de.akquinet.jbosscc</groupId>
 			<artifactId>jbosscc-needle</artifactId>
 			<version>2.1</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>

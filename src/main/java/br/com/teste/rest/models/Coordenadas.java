@@ -8,14 +8,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+/**
+ * 
+ * @author Rodolfo Rosendo
+ *
+ */
 @Entity
 @Table
 @JsonInclude(Include.ALWAYS)
-public class Cordenadas implements Serializable {
+public class Coordenadas implements Serializable {
 
 	/**
 	 * 
@@ -29,11 +35,11 @@ public class Cordenadas implements Serializable {
 	private Integer cordenadaX;
 	private Integer cordenadaY;
 
-	public Cordenadas() {
+	public Coordenadas() {
 		//
 	}
 
-	public Cordenadas(Integer id, String nome, Integer cordenadaX, Integer cordenadaY) {
+	public Coordenadas(Integer id, String nome, Integer cordenadaX, Integer cordenadaY) {
 		this.id = id;
 		this.nome = nome;
 		this.cordenadaX = cordenadaX;
@@ -50,6 +56,7 @@ public class Cordenadas implements Serializable {
 		this.id = id;
 	}
 
+	@NotNull(message="Campo nome da cordenada deve ser informado.")
 	@Column(name = "NOME")
 	public String getNome() {
 		return nome;
@@ -58,7 +65,8 @@ public class Cordenadas implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
+	@NotNull(message="Valor para cordenada X deve ser informado.")
 	@Column(name = "CORDENADA_X")
 	public Integer getCordenadaX() {
 		return cordenadaX;
@@ -67,7 +75,8 @@ public class Cordenadas implements Serializable {
 	public void setCordenadaX(Integer cordenadaX) {
 		this.cordenadaX = cordenadaX;
 	}
-
+	
+	@NotNull(message="Valor para cordenada Y deve ser informado.")
 	@Column(name = "CORDENADA_Y")
 	public Integer getCordenadaY() {
 		return cordenadaY;

@@ -3,7 +3,7 @@ package br.com.teste.rest.repository;
 import javax.enterprise.context.RequestScoped;
 
 import br.com.teste.rest.base.Repository;
-import br.com.teste.rest.models.Cordenadas;
+import br.com.teste.rest.models.Coordenadas;
 
 /**
  * 
@@ -11,7 +11,7 @@ import br.com.teste.rest.models.Cordenadas;
  *
  */
 @RequestScoped
-public class CordenadasRepository extends Repository<Cordenadas, Integer> {
+public class CordenadasRepository extends Repository<Coordenadas, Integer> {
 
 	public CordenadasRepository() {
 	}

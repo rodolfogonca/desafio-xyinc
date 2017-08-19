@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ErrorEntity.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">xyinc Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">br.com.teste.rest.response</a> &gt; <span class="el_source">ErrorEntity.java</span></div><h1>ErrorEntity.java</h1><pre class="source lang-java linenums">package br.com.teste.rest.response;
+
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+/**
+ * 
+ * @author Rodolfo Goncalves
+ *
+ */
+@JsonInclude(Include.NON_EMPTY)
+public class ErrorEntity implements Serializable {
+
+	private static final long serialVersionUID = 3306363750957170366L;
+
+	private String code;
+	private String message;
+	private String stack;
+
+	public ErrorEntity(String code, String message) {
+<span class="nc" id="L23">		super();</span>
+<span class="nc" id="L24">		this.code = code;</span>
+<span class="nc" id="L25">		this.message = message;</span>
+<span class="nc" id="L26">	}</span>
+
+	public ErrorEntity(String code, String message, String stack) {
+<span class="nc" id="L29">		super();</span>
+<span class="nc" id="L30">		this.code = code;</span>
+<span class="nc" id="L31">		this.message = message;</span>
+<span class="nc" id="L32">		this.stack = stack;</span>
+<span class="nc" id="L33">	}</span>
+
+	public ErrorEntity() {
+<span class="nc" id="L36">		super();</span>
+<span class="nc" id="L37">	}</span>
+
+	public String getCode() {
+<span class="nc" id="L40">		return code;</span>
+	}
+
+	public void setCode(String code) {
+<span class="nc" id="L44">		this.code = code;</span>
+<span class="nc" id="L45">	}</span>
+
+	public String getMessage() {
+<span class="nc" id="L48">		return message;</span>
+	}
+
+	public void setMessage(String message) {
+<span class="nc" id="L52">		this.message = message;</span>
+<span class="nc" id="L53">	}</span>
+
+	public String getStack() {
+<span class="nc" id="L56">		return stack;</span>
+	}
+
+	public void setStack(String stack) {
+<span class="nc" id="L60">		this.stack = stack;</span>
+<span class="nc" id="L61">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L65">		return &quot;ErrorEntity - codigo [&quot; + code + &quot;]; mensagem: [&quot; + message + &quot;]; stack: [&quot; + stack + &quot;]&quot;;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

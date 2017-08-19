@@ -3,6 +3,13 @@ package br.com.teste.rest.interfaces;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 
+ * @author Rodolfo Goncalves
+ *
+ * @param <T>
+ * @param <ID>
+ */
 public interface IRepository<T extends Serializable, ID extends Serializable> {
 
 	/**

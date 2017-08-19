@@ -12,8 +12,13 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import br.com.teste.rest.bizz.CordenadasBizz;
-import br.com.teste.rest.models.Cordenadas;
+import br.com.teste.rest.models.Coordenadas;
 
+/**
+ * 
+ * @author Rodolfo Goncalves
+ *
+ */
 @Path("/service")
 public class Servicos {
 
@@ -23,7 +28,7 @@ public class Servicos {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/cargaBaseDados/")
-	public List<Cordenadas> teste() {
+	public List<Coordenadas> teste() {
 		try {
 			return bizz.cargaDadosIniciais();
 		} catch (Exception e) {
@@ -34,7 +39,7 @@ public class Servicos {
 	@GET
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Cordenadas> getAll() {
+	public List<Coordenadas> getAll() {
 		try {
 			return bizz.getAll();
 		} catch (Exception e) {
@@ -45,7 +50,7 @@ public class Servicos {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Cordenadas saveCordendas(Cordenadas cordenadas) {
+	public Coordenadas saveCordendas(Coordenadas cordenadas) {
 		try {
 			return bizz.save(cordenadas);
 		} catch (Exception e) {
@@ -56,8 +61,8 @@ public class Servicos {
 	@GET
 	@Path("/pois")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Cordenadas> getPois(@QueryParam("cordenadaX") Integer cordenadasX,
-			@QueryParam("cordenadaY") Integer cordenadaY, @QueryParam("raio") Integer raio) {
-		return bizz.getPoisProximidade(cordenadasX, cordenadaY, raio);
+	public List<Coordenadas> getPois(@QueryParam("coordenadaX") Integer coordenadasX,
+			@QueryParam("coordenadaY") Integer coordenadaY, @QueryParam("raio") Integer raio) {
+		return bizz.getPoisProximidade(coordenadasX, coordenadaY, raio);
 	}
 }

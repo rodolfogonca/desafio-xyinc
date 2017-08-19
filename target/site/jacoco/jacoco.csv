@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+xyinc Maven Webapp,br.com.teste.rest.models,Cordenadas,28,18,0,0,13,7,8,2,8,2
+xyinc Maven Webapp,br.com.teste.rest.exception.handlers,RuntimeExceptionHandler,23,0,0,0,5,0,2,0,2,0
+xyinc Maven Webapp,br.com.teste.rest.exception.handlers,IllegalArgumentExceptionHandler,20,0,0,0,4,0,2,0,2,0
+xyinc Maven Webapp,br.com.teste.rest.repository,CordenadasRepository,3,0,0,0,2,0,1,0,1,0
+xyinc Maven Webapp,br.com.teste.rest.base,Repository,101,0,8,0,22,0,12,0,8,0
+xyinc Maven Webapp,br.com.teste.rest.service,Servicos,44,0,0,0,11,0,5,0,5,0
+xyinc Maven Webapp,br.com.teste.rest.response,ErrorEntity,67,0,0,0,21,0,10,0,10,0
+xyinc Maven Webapp,br.com.teste.rest.constantes,Constantes,3,0,0,0,1,0,1,0,1,0
+xyinc Maven Webapp,br.com.teste.rest.bizz,CordenadasBizz,175,27,9,5,20,7,11,4,5,3

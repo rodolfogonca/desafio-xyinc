@@ -8,6 +8,11 @@ import javax.ws.rs.ext.Provider;
 
 import br.com.teste.rest.response.ErrorEntity;
 
+/**
+ * 
+ * @author Rodolfo Goncalves
+ *
+ */
 @Provider
 public class RuntimeExceptionHandler implements ExceptionMapper<RuntimeException> {
 

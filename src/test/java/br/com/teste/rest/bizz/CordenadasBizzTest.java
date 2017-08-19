@@ -1,14 +1,14 @@
 package br.com.teste.rest.bizz;
 
-import javax.inject.Inject;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
 
-import br.com.teste.rest.bizz.CordenadasBizz;
-import br.com.teste.rest.models.Cordenadas;
+import br.com.teste.rest.constantes.Constantes;
+import br.com.teste.rest.models.Coordenadas;
 
 /**
  * 
@@ -17,24 +17,51 @@ import br.com.teste.rest.models.Cordenadas;
  */
 public class CordenadasBizzTest {
 
-	@Inject
-	CordenadasBizz bizz;
+	private CordenadasBizz bizz;
 
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
 
+	@Before
+	public void instanciaClasses() {
+		bizz = new CordenadasBizz();
+	}
+
 	@Test
 	public void saveCordenadasObjectNull() {
-		Cordenadas cordenadas = null;
+		Coordenadas cordenadas = null;
 
 		try {
 			cordenadas = bizz.save(null);
 		} catch (Exception e) {
-			Assert.assertTrue(e.getMessage().equals("Nenhum parâmetro foi informado"));
+			assertTrue(e.getMessage().equals(Constantes.NENHUM_PARAMETRO_FOI_INFORMADO));
 		}
 
-		Assert.assertNull(cordenadas);
+		assertNull(cordenadas);
+	}
+
+	@Test
+	public void saveCordenadasCordenadasComValoresNulos() {
+		try{
+			bizz.getPoisProximidade(null, null, 0);
+		}catch(Exception e){
+			assertTrue(e.getMessage().equals(Constantes.VALORES_CORDENADAS_MENORES_QUE_ZERO));
+		}
+	}
+	
+	@Test
+	public void saveCordenadasCordenadasMenoresQueZero() {
+		try{
+			bizz.getPoisProximidade(-1, -1, 0);
+		}catch(Exception e){
+			assertTrue(e.getMessage().equals(Constantes.VALORES_CORDENADAS_MENORES_QUE_ZERO));
+		}
+	}
+
+	@Test
+	public void getPoisProximidadeParametrosNulos() {
+
 	}
 }
