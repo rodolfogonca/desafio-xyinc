@@ -47,7 +47,7 @@ public class CordenadasBizzTest {
 		try{
 			bizz.getPoisProximidade(null, null, 0);
 		}catch(Exception e){
-			assertTrue(e.getMessage().equals(Constantes.VALORES_CORDENADAS_MENORES_QUE_ZERO));
+			assertTrue(e.getMessage().equals(Constantes.VALORES_CORDENADAS_NULOS));
 		}
 	}
 	
