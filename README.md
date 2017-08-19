@@ -11,7 +11,7 @@ ________________________________________________________________________________
 
 	Passos para execução do projeto 
 		Após o download do servidor wildfly, na pasta bin dentro do pacote do wildfly extraído acessar a basta bin e 		     executar o arquivo standalone,  e linux .sh, se windows .bat;
-		Na pasta em que o projeto for clonado executar o comando mvn clean install deploy.	
+		Na pasta em que o projeto for clonado executar o comando mvn clean install	
 	Serviços expostos pela API 
 		Todos os retornos são em formato JSON;
 		A URL base para acesso aos serviços abaixo http://localhost:8080/xyinc/service/ ;
