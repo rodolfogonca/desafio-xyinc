@@ -1,9 +1,0 @@
-br/com/teste/rest/repository/CordenadasRepository.class
-br/com/teste/rest/exception/handlers/RuntimeExceptionHandler.class
-br/com/teste/rest/exception/handlers/IllegalArgumentExceptionHandler.class
-br/com/teste/rest/interfaces/IRepository.class
-br/com/teste/rest/models/Cordenadas.class
-br/com/teste/rest/response/ErrorEntity.class
-br/com/teste/rest/service/Servicos.class
-br/com/teste/rest/bizz/CordenadasBizz.class
-br/com/teste/rest/base/Repository.class
