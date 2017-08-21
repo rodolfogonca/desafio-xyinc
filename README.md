@@ -1,7 +1,7 @@
 Desafio Zup Este projeto tem como objetivo gerenciar coordenadas de GPS, tendo como funcionalidades cadastrar pontos de interesses(POIs), lista pontos cadastrados, e localizar pontos de interesses de acordo com a solicitação do usuário.
 __________________________________________________________________________________________________________________________________________
 1 - O desenvolvimento foi realizado especificamente nas tecnologias descritas abaixo 
-	* Java 8
+	** Java 8
 	* wildfly-10.1.0.Final(http://wildfly.org/downloads/) 
 	* Maven
 
